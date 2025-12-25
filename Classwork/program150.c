@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+typedef int *IPTR;
+
+//Time complexity: >O(N)
+
+void ReverseDisplay(int Arr[],int iSize)
+{
+    int iCnt=0;
+
+    for(iCnt=iSize-1;iCnt>=0;iCnt--)
+    {
+        printf("%d\n",Arr[iCnt]);
+    }
+}
+
+int main()
+{
+    int iLength=0;
+    int iCnt=0;
+    IPTR iPtr=NULL;
+
+    printf("Enter the number of elements: \n");
+    scanf("%d",&iLength);
+
+    iPtr=(IPTR)malloc(iLength*sizeof(int));         //Step 1: Allocate the memory
+
+    if(NULL==iPtr)
+    {
+        printf("Unable to allcate the memory");
+        return -1;
+    }
+
+    printf("Enter the values:\n");
+
+    for(iCnt=0;iCnt<iLength;iCnt++)
+    {
+        scanf("%d",&iPtr[iCnt]);
+    }
+
+    
+
+    //Step 2: Use the Memory
+    ReverseDisplay(iPtr,iLength);
+    
+
+
+    //Step 3: Free the memory
+    free(iPtr);
+
+    return 0;
+}
